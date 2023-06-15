@@ -22,6 +22,13 @@
       inputs.poetry2nix.follows = "poetry2nix";
       inputs.pythoneda-base.follows = "pythoneda-base";
     };
+    pythoneda-infrastructure-base = {
+      url = "github:pythoneda-infrastructure/base/0.0.1a8";
+      inputs.nixos.follows = "nixos";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.poetry2nix.follows = "poetry2nix";
+      inputs.pythoneda-base.follows = "pythoneda-base";
+    };
   };
   outputs = inputs:
     with inputs;
@@ -34,8 +41,8 @@
         maintainers = with pkgs.lib.maintainers; [ ];
         nixpkgsRelease = "nixos-23.05";
         shared = import ./nix/devShell.nix;
-        pythoneda-artifact-infrastructure-base-for =
-          { version, pythoneda-base, pythoneda-artifact-base, python }:
+        pythoneda-artifact-infrastructure-base-for = { version, pythoneda-base
+          , pythoneda-artifact-base, pythoneda-infrastructure-base, python }:
           python.pkgs.buildPythonPackage rec {
             pname = "pythoneda-artifact-infrastructure-base";
             inherit version;
@@ -47,6 +54,7 @@
             propagatedBuildInputs = with python.pkgs; [
               pythoneda-base
               pythoneda-artifact-base
+              pythoneda-infrastructure-base
             ];
 
             checkInputs = with python.pkgs; [ pytest ];
@@ -56,8 +64,9 @@
             preBuild = ''
               python -m venv .env
               source .env/bin/activate
-              pip install ${pythoneda-base}/dist/pythoneda_base-0.0.1a12-py3-none-any.whl
-              pip install ${pythoneda-artifact-base}/dist/pythoneda_artifact_base-0.0.1a1-py3-none-any.whl
+              pip install ${pythoneda-base}/dist/pythoneda_base-${pythoneda-base.version}-py3-none-any.whl
+              pip install ${pythoneda-artifact-base}/dist/pythoneda_artifact_base-${pythoneda-artifact-base.version}-py3-none-any.whl
+              pip install ${pythoneda-infrastructure-base}/dist/pythoneda_infrastructure_base-${pythoneda-infrastructure-base.version}-py3-none-any.whl
             '';
 
             postInstall = ''
@@ -69,11 +78,12 @@
               inherit description license homepage maintainers;
             };
           };
-        pythoneda-artifact-infrastructure-base-0_0_1a1-for =
-          { pythoneda-base, pythoneda-artifact-base, python }:
+        pythoneda-artifact-infrastructure-base-0_0_1a1-for = { pythoneda-base
+          , pythoneda-artifact-base, pythoneda-infrastructure-base, python }:
           pythoneda-artifact-infrastructure-base-for {
             version = "0.0.1a1";
-            inherit pythoneda-base pythoneda-artifact-base python;
+            inherit pythoneda-base pythoneda-artifact-base
+              pythoneda-infrastructure-base python;
           };
       in rec {
         packages = rec {
@@ -83,6 +93,8 @@
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python38;
               pythoneda-artifact-base =
                 pythoneda-artifact-base.packages.${system}.pythoneda-artifact-base-latest-python38;
+              pythoneda-infrastructure-base =
+                pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python38;
               python = pkgs.python38;
             };
           pythoneda-artifact-infrastructure-base-0_0_1a1-python39 =
@@ -91,6 +103,8 @@
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python39;
               pythoneda-artifact-base =
                 pythoneda-artifact-base.packages.${system}.pythoneda-artifact-base-latest-python39;
+              pythoneda-infrastructure-base =
+                pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python39;
               python = pkgs.python39;
             };
           pythoneda-artifact-infrastructure-base-0_0_1a1-python310 =
@@ -99,6 +113,8 @@
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python310;
               pythoneda-artifact-base =
                 pythoneda-artifact-base.packages.${system}.pythoneda-artifact-base-latest-python310;
+              pythoneda-infrastructure-base =
+                pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python310;
               python = pkgs.python310;
             };
           pythoneda-artifact-infrastructure-base-latest-python38 =

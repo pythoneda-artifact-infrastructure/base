@@ -113,13 +113,44 @@
         "type": "github"
       }
     },
+    "pythoneda-infrastructure-base": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixos": [
+          "nixos"
+        ],
+        "poetry2nix": [
+          "poetry2nix"
+        ],
+        "pythoneda-base": [
+          "pythoneda-base"
+        ]
+      },
+      "locked": {
+        "lastModified": 1686818550,
+        "narHash": "sha256-KY9s2djmZ3IKvoyGG9Ex1V+qZbpmSr0QbGg546ycOFY=",
+        "owner": "pythoneda-infrastructure",
+        "repo": "base",
+        "rev": "53e1d3b3917461a5014964fdb31e43cf2042c778",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pythoneda-infrastructure",
+        "ref": "0.0.1a8",
+        "repo": "base",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixos": "nixos",
         "poetry2nix": "poetry2nix",
         "pythoneda-artifact-base": "pythoneda-artifact-base",
-        "pythoneda-base": "pythoneda-base"
+        "pythoneda-base": "pythoneda-base",
+        "pythoneda-infrastructure-base": "pythoneda-infrastructure-base"
       }
     }
   },
