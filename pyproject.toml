@@ -9,9 +9,9 @@ packages = [{include = "pythonedaartifactinfrastructure"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pythoneda-base = "^0.0.1a12"
+pythoneda-base = "^0.0.1a13"
 pythoneda-artifact-base = "^0.0.1a1"
-pythoneda-infrastructure-base = "^0.0.1a8"
+pythoneda-infrastructure-base = "^0.0.1a9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0"
