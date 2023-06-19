@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pythoneda-artifact-infrastructure-base"
-version = "0.0.1a1"
+version = "0.0.1a2"
 description = "Infrastructure layer for pythoneda-artifact-scope/base"
 authors = ["rydnr <github@acm-sl.org>"]
 readme = "README.md"
@@ -9,9 +9,9 @@ packages = [{include = "pythonedaartifactinfrastructure"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pythoneda-base = "^0.0.1a13"
-pythoneda-artifact-base = "^0.0.1a1"
-pythoneda-infrastructure-base = "^0.0.1a9"
+pythoneda-base = "^0.0.1a14"
+pythoneda-artifact-base = "^0.0.1a2"
+pythoneda-infrastructure-base = "^0.0.1a10"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0"
