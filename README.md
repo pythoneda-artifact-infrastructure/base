@@ -1,3 +1,3 @@
-# PythonEDA-Artifact-Scope-Infrastructure/base
+# PythonEDA-Artifact-Infrastructure/base
 
-This package manages the infrastructure layer of [pythoneda-artifact-scope/base](https://github.com/pythoneda-artifact-scope/base "pythoneda-artifact-scope/base").
+This package manages the infrastructure layer of [pythoneda-artifact/base](https://github.com/pythoneda-artifact/base "pythoneda-artifact/base").

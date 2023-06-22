@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda.primary_port import PrimaryPort
-from pythonedaartifact.tag_repository_requested import TagRepositoryRequested
+from pythonedaartifact.tag_requested import TagRequested
 
 import argparse
 import logging
@@ -45,6 +45,6 @@ class TagCli(PrimaryPort):
         parser.add_argument("repository_url", help="The url of the repository")
         args, unknown_args = parser.parse_known_args()
 
-        event = TagRepositoryRequested(args.repository_url)
-        logging.getLogger(__name__).debug(f"Requesting the tagging of repository {event.repository}")
+        event = TagRequested(args.repository_url)
+        logging.getLogger(__name__).debug(f"Requesting the tagging of repository {event.repository_url}")
         await app.accept(event)

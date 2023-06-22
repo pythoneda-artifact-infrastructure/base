@@ -5,7 +5,7 @@
     nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
     pythoneda-base = {
-      url = "github:pythoneda/base/0.0.1a14";
+      url = "github:pythoneda/base/0.0.1a15";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
     };
@@ -16,7 +16,7 @@
       inputs.pythoneda-base.follows = "pythoneda-base";
     };
     pythoneda-infrastructure-base = {
-      url = "github:pythoneda-infrastructure/base/0.0.1a10";
+      url = "github:pythoneda-infrastructure/base/0.0.1a11";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -81,17 +81,17 @@
               inherit description license homepage maintainers;
             };
           };
-        pythoneda-artifact-infrastructure-base-0_0_1a2-for = { pythoneda-base
+        pythoneda-artifact-infrastructure-base-0_0_1a3-for = { pythoneda-base
           , pythoneda-artifact-base, pythoneda-infrastructure-base, python }:
           pythoneda-artifact-infrastructure-base-for {
-            version = "0.0.1a2";
+            version = "0.0.1a3";
             inherit pythoneda-base pythoneda-artifact-base
               pythoneda-infrastructure-base python;
           };
       in rec {
         packages = rec {
-          pythoneda-artifact-infrastructure-base-0_0_1a2-python38 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-for {
+          pythoneda-artifact-infrastructure-base-0_0_1a3-python38 =
+            pythoneda-artifact-infrastructure-base-0_0_1a3-for {
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python38;
               pythoneda-artifact-base =
@@ -100,8 +100,8 @@
                 pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python38;
               python = pkgs.python38;
             };
-          pythoneda-artifact-infrastructure-base-0_0_1a2-python39 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-for {
+          pythoneda-artifact-infrastructure-base-0_0_1a3-python39 =
+            pythoneda-artifact-infrastructure-base-0_0_1a3-for {
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python39;
               pythoneda-artifact-base =
@@ -110,8 +110,8 @@
                 pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python39;
               python = pkgs.python39;
             };
-          pythoneda-artifact-infrastructure-base-0_0_1a2-python310 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-for {
+          pythoneda-artifact-infrastructure-base-0_0_1a3-python310 =
+            pythoneda-artifact-infrastructure-base-0_0_1a3-for {
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python310;
               pythoneda-artifact-base =
@@ -121,50 +121,50 @@
               python = pkgs.python310;
             };
           pythoneda-artifact-infrastructure-base-latest-python38 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-python38;
+            pythoneda-artifact-infrastructure-base-0_0_1a3-python38;
           pythoneda-artifact-infrastructure-base-latest-python39 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-python39;
+            pythoneda-artifact-infrastructure-base-0_0_1a3-python39;
           pythoneda-artifact-infrastructure-base-latest-python310 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-python310;
+            pythoneda-artifact-infrastructure-base-0_0_1a3-python310;
           pythoneda-artifact-infrastructure-base-latest =
             pythoneda-artifact-infrastructure-base-latest-python310;
           default = pythoneda-artifact-infrastructure-base-latest;
         };
         defaultPackage = packages.default;
         devShells = rec {
-          pythoneda-artifact-infrastructure-base-0_0_1a2-python38 =
+          pythoneda-artifact-infrastructure-base-0_0_1a3-python38 =
             shared.devShell-for {
               package =
-                packages.pythoneda-artifact-infrastructure-base-0_0_1a2-python38;
+                packages.pythoneda-artifact-infrastructure-base-0_0_1a3-python38;
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python39;
               python = pkgs.python38;
               inherit pkgs nixpkgsRelease;
             };
-          pythoneda-artifact-infrastructure-base-0_0_1a2-python39 =
+          pythoneda-artifact-infrastructure-base-0_0_1a3-python39 =
             shared.devShell-for {
               package =
-                packages.pythoneda-artifact-infrastructure-base-0_0_1a2-python39;
+                packages.pythoneda-artifact-infrastructure-base-0_0_1a3-python39;
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python39;
               python = pkgs.python39;
               inherit pkgs nixpkgsRelease;
             };
-          pythoneda-artifact-infrastructure-base-0_0_1a2-python310 =
+          pythoneda-artifact-infrastructure-base-0_0_1a3-python310 =
             shared.devShell-for {
               package =
-                packages.pythoneda-artifact-infrastructure-base-0_0_1a2-python310;
+                packages.pythoneda-artifact-infrastructure-base-0_0_1a3-python310;
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python310;
               python = pkgs.python310;
               inherit pkgs nixpkgsRelease;
             };
           pythoneda-artifact-infrastructure-base-latest-python38 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-python38;
+            pythoneda-artifact-infrastructure-base-0_0_1a3-python38;
           pythoneda-artifact-infrastructure-base-latest-python39 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-python39;
+            pythoneda-artifact-infrastructure-base-0_0_1a3-python39;
           pythoneda-artifact-infrastructure-base-latest-python310 =
-            pythoneda-artifact-infrastructure-base-0_0_1a2-python310;
+            pythoneda-artifact-infrastructure-base-0_0_1a3-python310;
           pythoneda-artifact-infrastructure-base-latest =
             pythoneda-artifact-infrastructure-base-latest-python310;
           default = pythoneda-artifact-infrastructure-base-latest;
