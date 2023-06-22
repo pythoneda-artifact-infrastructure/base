@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "pythoneda-artifact-infrastructure-base"
+name = "pythoneda-artifact-infrastructure-git-tagging"
 version = "0.0.1a3"
-description = "Infrastructure layer for pythoneda-artifact/base"
+description = "Infrastructure layer for pythoneda-artifact/git-tagging"
 authors = ["rydnr <github@acm-sl.org>"]
 readme = "README.md"
-homepage = "https://github.com/pythoneda-artifact-infrastructure/base"
-packages = [{include = "pythonedaartifactinfrastructure"}]
+homepage = "https://github.com/pythoneda-artifact-infrastructure/git-tagging"
+packages = [{include = "pythonedaartifactinfrastructuregittagging"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 pythoneda-base = "^0.0.1a15"
-pythoneda-artifact-base = "^0.0.1a2"
+pythoneda-artifact-git-tagging = "^0.0.1a3"
 pythoneda-infrastructure-base = "^0.0.1a11"
 
 [tool.poetry.dev-dependencies]

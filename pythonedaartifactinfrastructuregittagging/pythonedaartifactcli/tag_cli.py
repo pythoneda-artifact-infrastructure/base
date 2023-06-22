@@ -1,9 +1,9 @@
 """
-pythonedaartifactinfrastructure/pythonedaartifactcli/tag_cli.py
+pythonedaartifactinfrastructuregittagging/pythonedaartifactcli/tag_cli.py
 
-This file performs the tagging from the cli.
+This file performs the tagging of git repositories from the cli.
 
-Copyright (C) 2023-today rydnr's pythoneda-artifact-infrastructure/base
+Copyright (C) 2023-today rydnr's pythoneda-artifact-infrastructure/git-tagging
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda.primary_port import PrimaryPort
-from pythonedaartifact.tag_requested import TagRequested
+from pythonedaartifactgittagging.tag_requested import TagRequested
 
 import argparse
 import logging

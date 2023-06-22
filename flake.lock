@@ -18,11 +18,11 @@
     },
     "nixos": {
       "locked": {
-        "lastModified": 1686736559,
-        "narHash": "sha256-YyUSVoOKIDAscTx7IZhF9x3qgZ9dPNF19fKk+4c5irc=",
+        "lastModified": 1687288566,
+        "narHash": "sha256-VckkiJ88Gzdc2cstm0z5eFcrHbvkm4VjxavHBGssvZI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ddf4688dc7aeb14e8a3c549cb6aa6337f187a884",
+        "rev": "b6c73c5fe53bb3afbf65e870541e0645e9145171",
         "type": "github"
       },
       "original": {
@@ -32,7 +32,7 @@
         "type": "github"
       }
     },
-    "pythoneda-artifact-base": {
+    "pythoneda-artifact-git-tagging": {
       "inputs": {
         "flake-utils": [
           "flake-utils"
@@ -45,17 +45,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1687182585,
-        "narHash": "sha256-vhrO9UARsfApkAL41KdyGGEDmUlQRBeC7TfdhVpDesI=",
+        "lastModified": 1687443804,
+        "narHash": "sha256-U7uTccYlN04PLHU3+iVZ85TKOsN7ZJD4NaOU2QM7aFY=",
         "owner": "pythoneda-artifact",
-        "repo": "base",
-        "rev": "dfc068d230db8dc5a90d092007b800c2146b925e",
+        "repo": "git-tagging",
+        "rev": "d6a084e53b7e0d74365820010f978c0ce4edb308",
         "type": "github"
       },
       "original": {
         "owner": "pythoneda-artifact",
-        "ref": "0.0.1a2",
-        "repo": "base",
+        "ref": "0.0.1a3",
+        "repo": "git-tagging",
         "type": "github"
       }
     },
@@ -114,7 +114,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixos": "nixos",
-        "pythoneda-artifact-base": "pythoneda-artifact-base",
+        "pythoneda-artifact-git-tagging": "pythoneda-artifact-git-tagging",
         "pythoneda-base": "pythoneda-base",
         "pythoneda-infrastructure-base": "pythoneda-infrastructure-base"
       }
