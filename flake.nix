@@ -54,6 +54,7 @@
 
             nativeBuildInputs = with python.pkgs; [ pip pkgs.jq poetry-core ];
             propagatedBuildInputs = with python.pkgs; [
+              GitPython
               pythoneda-base
               pythoneda-artifact-git-tagging
               pythoneda-infrastructure-base

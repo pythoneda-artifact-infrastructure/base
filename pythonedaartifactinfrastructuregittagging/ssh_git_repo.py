@@ -18,7 +18,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
+from pythoneda.value_object import attribute, sensitive
 from pythonedasharedgit.git_repo import GitRepo
+
+from git import Repo
 
 class SshGitRepo(GitRepo):
     """
