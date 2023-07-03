@@ -1,5 +1,5 @@
 """
-pythonedaartifactinfrastructuregittagging/pythonedaartifactcli/tag_cli.py
+pythonedaartifactinfrastructuregittagging/pythonedaartifactgittaggingcli/tag_cli.py
 
 This file performs the tagging of git repositories from the cli.
 
@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda.primary_port import PrimaryPort
-from pythonedaartifactgittagging.tag_requested import TagRequested
+from pythonedaartifacteventgittagging.tag_requested import TagRequested
 
 import argparse
 import logging
@@ -43,8 +43,9 @@ class TagCli(PrimaryPort):
             description="Tags given repository"
         )
         parser.add_argument("repository_url", help="The url of the repository")
+        parser.add_argument("branch", help="The branch to tag")
         args, unknown_args = parser.parse_known_args()
 
-        event = TagRequested(args.repository_url)
-        logging.getLogger(__name__).debug(f"Requesting the tagging of repository {event.repository_url}")
+        event = TagRequested(args.repository_url, args.branch)
+        logging.getLogger(__name__).debug(f"Requesting the tagging of repository {event.repository_url}/{event.branch}")
         await app.accept(event)
