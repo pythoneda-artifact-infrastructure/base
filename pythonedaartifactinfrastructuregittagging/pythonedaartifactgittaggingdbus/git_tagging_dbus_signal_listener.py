@@ -20,8 +20,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda.event import Event
 from pythonedaartifacteventgittagging.tag_credentials_provided import TagCredentialsProvided
-from pythonedainfrastructure.pythonedadbus.dbus_signal_listener import DbusSignalListener
 from pythonedaartifacteventinfrastructuregittagging.pythonedaartifacteventgittaggingdbus.dbus_tag_credentials_provided import DbusTagCredentialsProvided
+from pythonedainfrastructure.pythonedadbus.dbus_signal_listener import DbusSignalListener
 
 from dbus_next import BusType, Message
 
@@ -39,7 +39,7 @@ class GitTaggingDbusSignalListener(DbusSignalListener):
         - Listen to signals relevant to GitTagging.
 
     Collaborators:
-        - PythonEDAApplication: Receives relevant domain events.
+        - PythonEDA: Receives relevant domain events.
     """
 
     def __init__(self):
@@ -59,11 +59,11 @@ class GitTaggingDbusSignalListener(DbusSignalListener):
         result = {}
         key = self.fqdn_key(TagCredentialsProvided)
         result[key] = [
-            DbusTagCredentialsProvided, BusType.SYSTEM, self.listen_TagCredentialsProvided.__name__
+            DbusTagCredentialsProvided, BusType.SYSTEM
         ]
         return result
 
-    def parse_TagCredentialsProvided(self, message: Message) -> TagCredentialsProvided:
+    def parse_pythonedaartifactgittagging_TagCredentialsProvided(self, message: Message) -> TagCredentialsProvided:
         """
         Parses given d-bus message containing a TagCredentialsProvided event.
         :param message: The message.
@@ -74,11 +74,10 @@ class GitTaggingDbusSignalListener(DbusSignalListener):
         request_id, repository_url, branch, ssh_username, private_key_file, private_key_passphrase = message.body
         return TagCredentialsProvided(request_id, repository_url, branch, ssh_username, private_key_file, private_key_passphrase)
 
-    async def listen_TagCredentialsProvided(self, event: TagCredentialsProvided):
+    async def listen_pythonedaartifactgittagging_TagCredentialsProvided(self, event: TagCredentialsProvided):
         """
         Gets notified when a TagCredentialsProvided event occurs.
         :param event: The TagCredentialsProvided event.
         :type event: pythonedaartifactgittagging.tag_credentials_provided.TagCredentialsProvided
         """
-        print(f'Received TagCredentialsProvided {event}')
         await self.app.accept(event)

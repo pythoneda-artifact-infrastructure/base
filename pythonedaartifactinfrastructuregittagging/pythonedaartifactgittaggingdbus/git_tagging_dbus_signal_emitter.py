@@ -41,7 +41,7 @@ class GitTaggingDbusSignalEmitter(DbusSignalEmitter):
         - Emit domain events as d-bus signals on behalf of GitTagging.
 
     Collaborators:
-        - PythonEDAApplication: Requests emitting events.
+        - PythonEDA: Requests emitting events.
     """
     def __init__(self):
         """
@@ -49,22 +49,21 @@ class GitTaggingDbusSignalEmitter(DbusSignalEmitter):
         """
         super().__init__()
 
-    def transform_TagCredentialsRequested(self, event: TagCredentialsRequested) -> List:
+    def transform_TagCredentialsRequested(self, event: TagCredentialsRequested) -> List[str]:
         """
-        Transforms given event to string.
+        Transforms given event to signal parameters.
         :param event: The event to transform.
-        :type event: TagCredentialsProvided from pythonedaartifactgittagging.tag_credentials_requested
-        :return: The serialized version of the event.
-        :rtype: str
+        :type event: pythonedaartifactgittagging.tag_credentials_provided.TagCredentialsProvided
+        :return: The event information.
+        :rtype: List[str]
         """
-        print(f'transformTagCredentialsRequested -> {[ event.repository_url, event.branch ]}')
         return [ event.repository_url, event.branch ]
 
     def signature_for_TagCredentialsRequested(self, event: TagCredentialsRequested) -> str:
         """
         Retrieves the signature for the parameters of given event.
         :param event: The domain event.
-        :type event: interface=pythonedaartifacteventgittagging.tag_credentials_requested.TagCredentialsRequested;
+        :type event: pythonedaartifacteventgittagging.tag_credentials_requested.TagCredentialsRequested
         :return: The signature.
         :rtype: str
         """
@@ -86,13 +85,10 @@ class GitTaggingDbusSignalEmitter(DbusSignalEmitter):
         """
         result = {}
         key = self.fqdn_key(TagCredentialsRequested)
+        instance = DbusTagCredentialsRequested()
         result[key] = {
                 "interface": DbusTagCredentialsRequested,
                 "busType": BusType.SYSTEM,
-                "destination": "pythoneda.artifact.git-tagging",
-                "path": "/pythoneda/artifact/git_tagging",
-                "interfaceName": "pythoneda.artifact.GitTagging",
-                "signal": "TagCredentialsRequested",
                 "transformer": self.transform_TagCredentialsRequested,
                 "signature": self.signature_for_TagCredentialsRequested
             }
