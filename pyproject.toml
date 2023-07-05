@@ -9,14 +9,15 @@ packages = [{include = "pythonedaartifactinfrastructuregittagging"}]
 
 [tool.poetry.dependencies]
 dbus-next = "^0.2.3"
-dulwich = "^0.20.50"
+dulwich = "^0.21.5"
 grpcio = "^1.41.0"
 paramiko = "^2.11.0"
 python = "^3.8"
-pythoneda-base = "^0.0.1a15"
 pythoneda-artifact-event-git-tagging = "^0.0.1a1"
-pythoneda-artifact-git-tagging = "^0.0.1a5"
-pythoneda-infrastructure-base = "^0.0.1a11"
+pythoneda-artifact-git-tagging = "^0.0.1a6"
+pythoneda-base = "^0.0.1a15"
+pythoneda-infrastructure-base = "^0.0.1a12"
+pythoneda-shared-git = "^0.0.1a3"
 requests = "^2.28.1"
 semver = "^3.0.0"
 

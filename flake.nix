@@ -15,8 +15,14 @@
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
     };
+    pythoneda-shared-git = {
+      url = "github:pythoneda-shared/git/0.0.1a3";
+      inputs.nixos.follows = "nixos";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.pythoneda-base.follows = "pythoneda-base";
+    };
     pythoneda-artifact-git-tagging = {
-      url = "github:pythoneda-artifact/git-tagging/0.0.1a5";
+      url = "github:pythoneda-artifact/git-tagging/0.0.1a6";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -24,7 +30,7 @@
         "pythoneda-artifact-event-git-tagging";
     };
     pythoneda-infrastructure-base = {
-      url = "github:pythoneda-infrastructure/base/0.0.1a11";
+      url = "github:pythoneda-infrastructure/base/0.0.1a12";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -45,7 +51,7 @@
         pythoneda-artifact-infrastructure-git-tagging-for = { version
           , pythoneda-artifact-event-git-tagging, pythoneda-base
           , pythoneda-artifact-git-tagging, pythoneda-infrastructure-base
-          , python }:
+          , pythoneda-shared-git, python }:
           let
             pname = "pythoneda-artifact-infrastructure-git-tagging";
             pythonVersionParts = builtins.splitVersion python.version;
@@ -72,6 +78,7 @@
               pythoneda-artifact-git-tagging
               pythoneda-base
               pythoneda-infrastructure-base
+              pythoneda-shared-git
               requests
               semver
             ];
@@ -88,6 +95,7 @@
               pip install ${pythoneda-artifact-event-git-tagging}/dist/pythoneda_artifact_event_git_tagging-${pythoneda-artifact-event-git-tagging.version}-py3-none-any.whl
               pip install ${pythoneda-artifact-git-tagging}/dist/pythoneda_artifact_git_tagging-${pythoneda-artifact-git-tagging.version}-py3-none-any.whl
               pip install ${pythoneda-infrastructure-base}/dist/pythoneda_infrastructure_base-${pythoneda-infrastructure-base.version}-py3-none-any.whl
+              pip install ${pythoneda-shared-git}/dist/pythoneda_shared_git-${pythoneda-shared-git.version}-py3-none-any.whl
               rm -rf .env
             '';
 
@@ -104,12 +112,12 @@
         pythoneda-artifact-infrastructure-git-tagging-0_0_1a6-for =
           { pythoneda-base, pythoneda-artifact-event-git-tagging
           , pythoneda-artifact-git-tagging, pythoneda-infrastructure-base
-          , python }:
+          , pythoneda-shared-git, python }:
           pythoneda-artifact-infrastructure-git-tagging-for {
             version = "0.0.1a6";
             inherit pythoneda-base pythoneda-artifact-event-git-tagging
               pythoneda-artifact-git-tagging pythoneda-infrastructure-base
-              python;
+              pythoneda-shared-git python;
           };
       in rec {
         packages = rec {
@@ -123,6 +131,8 @@
                 pythoneda-artifact-git-tagging.packages.${system}.pythoneda-artifact-git-tagging-latest-python38;
               pythoneda-infrastructure-base =
                 pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python38;
+              pythoneda-shared-git =
+                pythoneda-shared-git.packages.${system}.pythoneda-shared-git-latest-python38;
               python = pkgs.python38;
             };
           pythoneda-artifact-infrastructure-git-tagging-0_0_1a6-python39 =
@@ -135,6 +145,8 @@
                 pythoneda-artifact-git-tagging.packages.${system}.pythoneda-artifact-git-tagging-latest-python39;
               pythoneda-infrastructure-base =
                 pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python39;
+              pythoneda-shared-git =
+                pythoneda-shared-git.packages.${system}.pythoneda-shared-git-latest-python39;
               python = pkgs.python39;
             };
           pythoneda-artifact-infrastructure-git-tagging-0_0_1a6-python310 =
@@ -147,6 +159,8 @@
                 pythoneda-artifact-git-tagging.packages.${system}.pythoneda-artifact-git-tagging-latest-python310;
               pythoneda-infrastructure-base =
                 pythoneda-infrastructure-base.packages.${system}.pythoneda-infrastructure-base-latest-python310;
+              pythoneda-shared-git =
+                pythoneda-shared-git.packages.${system}.pythoneda-shared-git-latest-python310;
               python = pkgs.python310;
             };
           pythoneda-artifact-infrastructure-git-tagging-latest-python38 =
