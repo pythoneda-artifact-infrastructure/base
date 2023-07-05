@@ -65,12 +65,15 @@
             nativeBuildInputs = with python.pkgs; [ pip pkgs.jq poetry-core ];
             propagatedBuildInputs = with python.pkgs; [
               dbus-next
+              dulwich
               GitPython
               grpcio
+              pythoneda-artifact-event-git-tagging
               pythoneda-artifact-git-tagging
               pythoneda-base
               pythoneda-infrastructure-base
               requests
+              semver
             ];
 
             checkInputs = with python.pkgs; [ pytest ];
